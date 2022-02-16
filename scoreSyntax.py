@@ -20,6 +20,7 @@ syntax_labels= ['S','VP','NP','N','V','DET','ROOT', 'PRON', 'ADV', 'ADVP','VERB'
 #====================getIndex=========================
 # Function to find index of closing
 # bracket for a given opening bracket.
+# source: https://www.geeksforgeeks.org/find-index-closing-bracket-given-opening-bracket-expression/
 def getIndex(s, i):
   
     # If input is invalid.
