@@ -1,23 +1,17 @@
-#Compare constituency trees and get a similarity/accuracy estimate. 
-#Winterlight Labs, Gouming Martens, 15 February 2022
+# Compare constituency trees and get a similarity/accuracy estimate. 
+# Winterlight Labs, Gouming Martens, 15 February 2022
 
-#import os
-#import pandas as pd
 from collections import deque
 
-# Create dataframe
-#df = pd.DataFrame()
-
-# Read in data, load in data
-#dep = pd.read_excel('de_annotation_validation_depparses.xlsx')
+# Load data
 syntax1 = "[S [NP [N John ]] [VP [V eats ] [NP [DET an ] [NP [N apple ]]]]]"
 syntax2 = "[S [NP [N John ]] [VP [V eats ] ] [NP [DET an ] [N apple ]]]"
 syntax3 = "[S [NP John ] [VP eats an apple ]]"
 syntax_labels= ['S','VP','NP','N','V','DET','ROOT', 'PRON', 'ADV', 'ADVP','VERB','NOUN','INTJ','CCONJ','AUX']
 
-################## define functions ###############
+################## Define Functions ###############
 
-#====================getIndex=========================
+#====================getIndex======================
 # Function to find index of closing
 # bracket for a given opening bracket.
 # source: https://www.geeksforgeeks.org/find-index-closing-bracket-given-opening-bracket-expression/
@@ -68,8 +62,8 @@ def trimStr(string,lab):
     # and remove space after each constituent
     return short[:-1]
 
-#=====================onstitList===========================
-# Create from string a list of all consituents
+#=====================constitList===========================
+# Create from string a list of all constituents
 def constitList(s):
     # Create empty list
     c = []
@@ -150,7 +144,9 @@ def scoreSyntax(s1,s2):
     # Return the similarity/accuracy score by dividing the total number 
     # of matches over the length of the list minus the differences in length
     # between the two lists
-    return print(score/((len(list1)+dif)))
+    simularity_score = score/((len(list1)+dif))
+    print('The two phrase structures have a similarity score of: ',simularity_score)
+    #return simularity_score
 
 scoreSyntax(syntax2,syntax1)
 scoreSyntax(syntax1,syntax3)
